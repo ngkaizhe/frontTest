@@ -14,13 +14,13 @@ export class DataServiceService {
   /**
    * getIndex
    */
-  public getIndex() {
+  getIndex() {
     return this.http.get('http://127.0.0.1:8000/api/reservations');
   }
 
-  public postReservation() {
+  postReservation() {
     let data = {
-      parent_name : 'testingFront',
+      parent_name : 'testingFront2',
       email : 'kaizhe1991@outlook.com',
       line_id : 'a line id',
       children_name : 'kaizhe',
@@ -31,6 +31,10 @@ export class DataServiceService {
       status: Number(1),
       reply_message : 'replying dude',
     };
-    return this.http.post('http://127.0.0.1:8000/api/reservations', data);
+    return this.http.post('http://127.0.0.1:8000/api/reservations', data, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    });
   }
 }

@@ -1,1 +1,16 @@
-<p>register works!</p>
+<div>
+    <h1>Register Part</h1>
+    <label>Username: </label>
+    <input type="text" id="register_username" [(ngModel)]="data.name">
+    <br>
+    <label>Email: </label>
+    <input type="text" id="register_email" [(ngModel)]="data.email">
+    <br>
+    <label>Password: </label>
+    <input type="password" id="register_password" [(ngModel)]="data.password">
+    <br>
+    <label>Password Confirmation: </label>
+    <input type="password" id="register_password_confirmation" [(ngModel)]="data.password_confirmation">
+    <br>
+    <button (click)="register()">register</button>
+</div>

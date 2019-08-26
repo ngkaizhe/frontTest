@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { $ } from 'protractor';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -7,18 +8,28 @@ import { $ } from 'protractor';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  data = {
+    email : '',
+    password: '',
+  };
 
-  constructor() { }
+
+  constructor(private router: Router, private authService: AuthService) {
+  }
 
   ngOnInit() {
   }
 
-  /**
-   * login
-   */
-  public login() {
-    const login_username = (<HTMLInputElement> document.getElementById('login_username')).value;
-    const login_password = (<HTMLInputElement> document.getElementById('login_password')).value;
+  login() {
+    this.authService.login(this.data).subscribe((result: any) => {
+      console.log(result);
+      if (result.token) {
+        localStorage.setItem('token', result.token);
+        this.router.navigate(['/']);
+      } else {
+        alert('fail');
+      }
+    });
   }
 
 

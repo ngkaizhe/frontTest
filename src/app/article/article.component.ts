@@ -30,4 +30,16 @@ export class ArticleComponent implements OnInit {
     });
   }
 
+  logout(){
+    
+  }
+
+  isLogin(){
+    if(localStorage.getItem('token'))
+    {
+      return true;
+    }
+    return false;
+  }
+
 }

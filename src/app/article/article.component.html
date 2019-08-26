@@ -22,4 +22,12 @@
     <li>
       <button (click)="postReservation()">post method</button>
     </li>
+    <li *ngIf="isLogin">
+      <button (click)="logout()">logout</button>
+    </li>
+
+    <li *ngIf="isLogin; else elseBlock">
+      You are login!
+    </li>
+    <ng-template #elseBlock>You are not not not login!</ng-template>
   </ul>

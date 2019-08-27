@@ -30,13 +30,18 @@ export class ArticleComponent implements OnInit {
     });
   }
 
-  logout(){
-    
+  logout() {
+    this.dataService.logout().subscribe((data: any) => {
+      console.log(data);
+      if (data.success) {
+        localStorage.removeItem('token');
+        console.log('Logout Successful!');
+      }
+    });
   }
 
-  isLogin(){
-    if(localStorage.getItem('token'))
-    {
+  public isLogin() {
+    if (localStorage.getItem('token')) {
       return true;
     }
     return false;
